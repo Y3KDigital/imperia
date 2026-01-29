@@ -9,6 +9,14 @@ const ADMIN_API_BASE = SUPABASE_FUNCTIONS_BASE && !SUPABASE_FUNCTIONS_BASE.inclu
   ? `${SUPABASE_FUNCTIONS_BASE.replace(/\/$/, '')}/admin-api`
   : `${window.location.origin}/api/admin`;
 
+function isGitHubPages() {
+  return window.location.hostname.endsWith('github.io');
+}
+
+function isSupabaseFunctionsConfigured() {
+  return Boolean(SUPABASE_FUNCTIONS_BASE) && !SUPABASE_FUNCTIONS_BASE.includes('__SUPABASE_FUNCTIONS_BASE__');
+}
+
 const ADMIN_TOKEN = localStorage.getItem('k_imperia_admin_token') || '';
 
 // State
@@ -18,6 +26,26 @@ let leaderboard = [];
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+  if (!isSupabaseFunctionsConfigured() && isGitHubPages()) {
+    document.body.innerHTML = `
+      <div style="max-width: 900px; margin: 0 auto; padding: 64px 20px; color: #e6e6e6; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;">
+        <h1 style="color: #c9a24d; margin-bottom: 12px;">Admin Demo Mode</h1>
+        <p style="color: #b0b0b0; line-height: 1.5;">
+          This Admin Command Center is running from GitHub Pages. Admin API calls are disabled until a Supabase Functions base URL is configured.
+        </p>
+        <p style="color: #b0b0b0; line-height: 1.5;">
+          Set <span style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">window.K_IMPERIA_FUNCTIONS_BASE</span>
+          in <span style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">admin.html</span>
+          (or publish via the IPFS deploy script) to point at:
+        </p>
+        <div style="background: #0b0b0d; border: 1px solid #2a2a2f; padding: 12px 14px; border-radius: 10px; color: #e6e6e6; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;">
+          https://&lt;PROJECT_REF&gt;.supabase.co/functions/v1
+        </div>
+      </div>
+    `;
+    return;
+  }
+
   // Check for admin token
   if (!ADMIN_TOKEN) {
     promptForToken();

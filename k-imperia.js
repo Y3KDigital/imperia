@@ -10,6 +10,14 @@
 // This placeholder is stamped at deploy time (see deploy-ipfs scripts)
 const SUPABASE_FUNCTIONS_BASE = (window.K_IMPERIA_FUNCTIONS_BASE || '__SUPABASE_FUNCTIONS_BASE__').trim();
 
+function isSupabaseFunctionsConfigured() {
+  return Boolean(SUPABASE_FUNCTIONS_BASE) && !SUPABASE_FUNCTIONS_BASE.includes('__SUPABASE_FUNCTIONS_BASE__');
+}
+
+function isGitHubPages() {
+  return window.location.hostname.endsWith('github.io');
+}
+
 function getSubmitEndpoint() {
   // If the placeholder wasn't replaced, fall back to local dev API
   if (!SUPABASE_FUNCTIONS_BASE || SUPABASE_FUNCTIONS_BASE.includes('__SUPABASE_FUNCTIONS_BASE__')) {
@@ -183,6 +191,15 @@ document.getElementById('intakeForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
   try {
+    if (!isSupabaseFunctionsConfigured() && isGitHubPages()) {
+      showStatus(
+        'Demo mode (GitHub Pages): submissions are disabled until SUPABASE_FUNCTIONS_BASE is configured. ' +
+        'Set window.K_IMPERIA_FUNCTIONS_BASE in index.html (or publish via the IPFS deploy script) to point at your Supabase Functions URL.',
+        'error'
+      );
+      return;
+    }
+
     const formData = new FormData(e.target);
     const data = formatSubmissionData(formData);
 

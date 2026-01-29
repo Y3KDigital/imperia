@@ -20,6 +20,8 @@ This repo contains the Genesis Allocation Registration system for K IMPERIA.
 - [Quick Start (Local)](#quick-start-local)
 - [Repo Navigation](#repo-navigation)
 - [Deployment (Public Links)](#deployment-public-links)
+- [GitHub Pages (Demo)](#github-pages-demo)
+- [License](#license)
 - [Documentation](#documentation)
 
 ---
@@ -186,6 +188,40 @@ $env:SUPABASE_FUNCTIONS_BASE="https://<PROJECT_REF>.supabase.co/functions/v1"
 ```
 
 The script prints the public links.
+
+---
+
+## GitHub Pages (Demo)
+
+GitHub Pages is useful to **show the UI** publicly. It is a static host (no server), so:
+
+- Without `window.K_IMPERIA_FUNCTIONS_BASE` configured, submissions/admin API calls are disabled on `github.io`.
+- For a fully working public flow, prefer the IPFS + Supabase Edge Functions deployment.
+
+### Enable Pages
+
+1. GitHub repo → **Settings** → **Pages**
+2. **Build and deployment** → Source: **Deploy from a branch**
+3. Branch: `main` and folder: `/ (root)`
+
+Your site will appear at:
+
+- `https://y3kdigital.github.io/imperia/`
+
+### Point Pages at Supabase (optional)
+
+Edit `index.html` and `admin.html` and set:
+
+- `window.K_IMPERIA_FUNCTIONS_BASE = 'https://<PROJECT_REF>.supabase.co/functions/v1'`
+
+---
+
+## License
+
+- Apache-2.0 license text: [LICENSE](LICENSE)
+- MIT license text: [LICENSE-MIT](LICENSE-MIT)
+- Trademark guidance: [TRADEMARKS.md](TRADEMARKS.md)
+- Attribution/trademark notice: [NOTICE](NOTICE)
 
 ## Documentation
 
