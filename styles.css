@@ -1,0 +1,354 @@
+/* K IMPERIA Genesis Intake Stylesheet */
+/* Imperial, institutional, minimal */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  background: #0b0b0d;
+  color: #e6e6e6;
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  border-bottom: 1px solid #2a2a2a;
+  background: linear-gradient(180deg, #0b0b0d 0%, #151518 100%);
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.subtitle {
+  color: #c9a24d;
+  font-size: 16px;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content {
+  max-width: 760px;
+  margin: 60px auto;
+  padding: 0 20px 60px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: #c9a24d;
+  border-bottom: 1px solid #2a2a2a;
+  padding-bottom: 8px;
+  margin: 40px 0 20px;
+}
+
+p {
+  margin-bottom: 16px;
+  color: #d0d0d0;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 16px;
+}
+
+ul li {
+  padding: 6px 0 6px 20px;
+  position: relative;
+  color: #d0d0d0;
+}
+
+ul li:before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #c9a24d;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+
+fieldset {
+  border: 1px solid #2a2a2a;
+  padding: 24px;
+  margin-bottom: 24px;
+  background: #0f0f11;
+}
+
+legend {
+  color: #c9a24d;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 0 8px;
+}
+
+.field-description {
+  font-size: 14px;
+  color: #a0a0a0;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e6e6e6;
+}
+
+label.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+label.checkbox-label input[type="checkbox"] {
+  margin-right: 10px;
+  margin-top: 0;
+  width: auto;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  background: #1a1a1c;
+  color: #fff;
+  border: 1px solid #2a2a2a;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+select:focus {
+  outline: none;
+  border-color: #c9a24d;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+button {
+  margin-top: 32px;
+  padding: 16px 32px;
+  background: #c9a24d;
+  color: #0b0b0d;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background: #e0b85a;
+}
+
+button:active {
+  background: #b08f3d;
+}
+
+#status {
+  margin-top: 24px;
+  padding: 16px;
+  background: #1a1a1c;
+  border-left: 3px solid #c9a24d;
+  font-size: 14px;
+  color: #e6e6e6;
+  display: none;
+}
+
+#status.visible {
+  display: block;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid #2a2a2a;
+  color: #808080;
+  font-size: 13px;
+}
+
+footer p {
+  margin-bottom: 8px;
+}
+
+.disclaimer {
+  font-size: 11px;
+  color: #606060;
+}
+
+/* Referral notice (shown if user came via referral link) */
+.referral-notice {
+  background: #1a1a1c;
+  border-left: 3px solid #c9a24d;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  color: #e6e6e6;
+}
+
+.referral-notice p {
+  margin: 0;
+}
+
+/* Referral success page */
+.referral-success {
+  text-align: center;
+}
+
+.referral-success h2 {
+  color: #c9a24d;
+  margin-bottom: 16px;
+}
+
+.referral-box {
+  background: #0f0f11;
+  border: 1px solid #2a2a2a;
+  padding: 32px;
+  margin: 32px 0;
+}
+
+.referral-box h3 {
+  color: #c9a24d;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.referral-link-box {
+  background: #1a1a1c;
+  padding: 16px;
+  margin: 20px 0;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.referral-link-box code {
+  flex: 1;
+  color: #c9a24d;
+  font-size: 14px;
+  word-break: break-all;
+}
+
+.referral-link-box button {
+  padding: 8px 16px;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.qr-section {
+  margin: 32px 0;
+}
+
+#qrcode {
+  display: inline-block;
+  padding: 16px;
+  background: #1a1a1c;
+  border: 1px solid #2a2a2a;
+  margin: 16px 0;
+}
+
+#qrcode canvas {
+  display: block;
+}
+
+.share-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.share-buttons button {
+  flex: 1;
+  min-width: 140px;
+  padding: 12px 16px;
+  margin: 0;
+}
+
+.referral-note {
+  font-size: 13px;
+  color: #a0a0a0;
+  margin-top: 24px;
+  font-style: italic;
+}
+
+.referral-disclaimer {
+  font-size: 12px;
+  color: #808080;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.email-notice {
+  margin-top: 32px;
+  color: #a0a0a0;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+    letter-spacing: 2px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .content {
+    margin: 40px auto;
+  }
+
+  fieldset {
+    padding: 16px;
+  }
+
+  .referral-box {
+    padding: 20px;
+  }
+
+  .referral-link-box {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .share-buttons {
+    flex-direction: column;
+  }
+
+  .share-buttons button {
+    width: 100%;
+  }
+}

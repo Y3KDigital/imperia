@@ -1,0 +1,123 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "K IMPERIA Genesis Allocation Record",
+  "description": "Schema for Genesis allocation registration submissions. This structure is designed for future XRPL anchoring and back-office management.",
+  "type": "object",
+  "required": [
+    "submission_id",
+    "timestamp",
+    "name",
+    "email",
+    "jurisdiction",
+    "role",
+    "metal",
+    "unit",
+    "proposed_weight",
+    "status"
+  ],
+  "properties": {
+    "submission_id": {
+      "type": "string",
+      "description": "SHA-256 hash of the submission payload (deterministic identifier)",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of submission"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Full name of registrant"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address for communication"
+    },
+    "organization": {
+      "type": "string",
+      "description": "Organization name (optional)"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Legal jurisdiction of registrant"
+    },
+    "wallet": {
+      "type": "string",
+      "description": "XRPL wallet address (optional, preferred format: r...)"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "Holder / Allocator",
+        "Issuer / Dealer",
+        "Partner / Infrastructure",
+        "Research / Observer"
+      ],
+      "description": "Registrant's role in the K IMPERIA ecosystem"
+    },
+    "metal": {
+      "type": "string",
+      "enum": ["Gold", "Silver", "Both"],
+      "description": "Type of physical metal for allocation"
+    },
+    "unit": {
+      "type": "string",
+      "enum": ["grams", "ounces", "kilograms"],
+      "description": "Weight unit for allocation"
+    },
+    "proposed_weight": {
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMinimum": true,
+      "description": "Proposed initial weight allocation (numeric value)"
+    },
+    "intended_use": {
+      "type": "string",
+      "enum": [
+        "Long-term reserve holding",
+        "Settlement liquidity",
+        "Issuance participation",
+        "Undecided"
+      ],
+      "description": "Intended use case for allocation"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PENDING", "APPROVED", "DEFERRED", "REJECTED"],
+      "default": "PENDING",
+      "description": "Current status of allocation request"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Internal notes (back-office use only)"
+    },
+    "reviewed_by": {
+      "type": "string",
+      "description": "Name of reviewer who processed the allocation"
+    },
+    "review_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of review/approval"
+    },
+    "referral_id": {
+      "type": "string",
+      "description": "Unique referral ID for this registrant (used when they share with others)",
+      "pattern": "^[A-Z0-9]{8}$"
+    },
+    "referred_by": {
+      "type": "string",
+      "description": "Referral ID of the person who referred this registrant",
+      "pattern": "^[A-Z0-9]{8}$"
+    },
+    "referral_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of people this registrant has referred"
+    }
+  }
+}

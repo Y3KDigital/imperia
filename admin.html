@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K IMPERIA — Genesis Command Center</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="header-content">
+    <h1>K IMPERIA</h1>
+    <p class="subtitle">Genesis Command Center</p>
+  </div>
+</header>
+
+<main class="admin-main">
+  
+  <!-- Summary Stats -->
+  <section class="stats-strip">
+    <div class="stat-card">
+      <div class="stat-value" id="totalSubmissions">—</div>
+      <div class="stat-label">Total Submissions</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-value" id="totalGold">—</div>
+      <div class="stat-label">Gold Weight (combined units)</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-value" id="totalSilver">—</div>
+      <div class="stat-label">Silver Weight (combined units)</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-value" id="referralRate">—</div>
+      <div class="stat-label">Referral Participation</div>
+    </div>
+    
+    <div class="stat-card">
+      <div class="stat-value" id="jurisdictionCount">—</div>
+      <div class="stat-label">Unique Jurisdictions</div>
+    </div>
+  </section>
+
+  <!-- Pending Submissions Table -->
+  <section class="submissions-section">
+    <div class="section-header">
+      <h2>Pending Submissions</h2>
+      <div class="controls">
+        <label>Sort by:</label>
+        <select id="sortBy">
+          <option value="timestamp">Timestamp (newest)</option>
+          <option value="weight">Weight (highest)</option>
+          <option value="referrals">Referral Count</option>
+        </select>
+        <button id="refreshBtn" class="btn-secondary">Refresh</button>
+      </div>
+    </div>
+
+    <div id="loadingState" class="loading">Loading submissions...</div>
+    <div id="errorState" class="error" style="display: none;"></div>
+
+    <table id="submissionsTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Metal</th>
+          <th>Weight</th>
+          <th>Jurisdiction</th>
+          <th>Referrals</th>
+          <th>Timestamp</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="submissionsBody">
+        <!-- Populated by JS -->
+      </tbody>
+    </table>
+
+    <div id="emptyState" class="empty-state" style="display: none;">
+      <p>No pending submissions.</p>
+    </div>
+  </section>
+
+  <!-- Referral Leaderboard (Internal) -->
+  <section class="leaderboard-section">
+    <div class="section-header">
+      <h2>Referral Activity (Internal)</h2>
+    </div>
+    <div id="leaderboardContent"></div>
+  </section>
+
+</main>
+
+<!-- Details Modal -->
+<div id="detailsModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Submission Details</h3>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

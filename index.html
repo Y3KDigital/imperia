@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K IMPERIA — Genesis Allocation Registration</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>K IMPERIA</h1>
+  <p class="subtitle">
+    Imperial-grade, weight-referenced issuance and settlement infrastructure on XRPL
+  </p>
+</header>
+
+<section class="content">
+  <h2>What This Is</h2>
+  <p>
+    K IMPERIA is a reserve-style issuance and settlement layer operated by UNYKORN.
+    Assets reference verified physical metal weight — not price, yield, or market value.
+  </p>
+
+  <h2>What This Is Not</h2>
+  <ul>
+    <li>Not a price-tracking instrument</li>
+    <li>Not yield-bearing</li>
+    <li>Not a promise of appreciation</li>
+    <li>Not a redemption guarantee</li>
+  </ul>
+
+  <h2>Provenance & Authority</h2>
+  <p>
+    UNYKORN operates as the originating precious metals dealer and attestor, sourcing
+    inventory through wholesale markets (including established desks such as APMEX Wholesale)
+    and attesting to metal type, purity, weight, and custody state at time of issuance.
+  </p>
+
+  <h2>Why Register</h2>
+  <p>
+    Genesis registration allows UNYKORN to responsibly structure issuance by measuring
+    real demand by weight, prioritizing early participants, and forming compliant issuance cohorts.
+  </p>
+  <p><strong>Registration is non-binding.</strong></p>
+
+  <h2>Genesis Allocation Registration</h2>
+
+  <form id="intakeForm">
+    <fieldset>
+      <legend>Identity</legend>
+      
+      <label>Full Name *</label>
+      <input type="text" name="name" required />
+
+      <label>Email *</label>
+      <input type="email" name="email" required />
+
+      <label>Organization</label>
+      <input type="text" name="organization" />
+
+      <label>Jurisdiction *</label>
+      <input type="text" name="jurisdiction" required />
+
+      <label>Wallet Address (optional, XRPL preferred)</label>
+      <input type="text" name="wallet" placeholder="r..." />
+    </fieldset>
+
+    <fieldset>
+      <legend>Role</legend>
+      
+      <label>Select what best describes you *</label>
+      <select name="role" required>
+        <option value="">Select role</option>
+        <option>Holder / Allocator</option>
+        <option>Issuer / Dealer</option>
+        <option>Partner / Infrastructure</option>
+        <option>Research / Observer</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Genesis Allocation Signal</legend>
+      
+      <p class="field-description">What physical metal weight are you willing to signal as an initial K IMPERIA allocation?</p>
+
+      <label>Metal Type *</label>
+      <select name="metal" required>
+        <option value="">Select metal</option>
+        <option>Gold</option>
+        <option>Silver</option>
+        <option>Both</option>
+      </select>
+
+      <label>Unit *</label>
+      <select name="unit" required>
+        <option value="">Select unit</option>
+        <option>grams</option>
+        <option>ounces</option>
+        <option>kilograms</option>
+      </select>
+
+      <label>Proposed Initial Weight *</label>
+      <input type="number" name="weight" step="0.01" min="0" required />
+
+      <label>Intended Use</label>
+      <select name="intended_use">
+        <option value="">Select intended use</option>
+        <option>Long-term reserve holding</option>
+        <option>Settlement liquidity</option>
+        <option>Issuance participation</option>
+        <option>Undecided</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Acknowledgment</legend>
+      
+      <label class="checkbox-label">
+        <input type="checkbox" name="ack_nonbinding" required />
+        I understand this submission is non-binding
+      </label>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="ack_noyield" required />
+        I understand no price, yield, or redemption is implied
+      </label>
+
+      <label class="checkbox-label">
+        <input type="checkbox" name="ack_discretionary" required />
+        I understand allocation acceptance is discretionary
+      </label>
+    </fieldset>
+
+    <button type="submit">Register Genesis Allocation</button>
+  </form>
+
+  <div id="status"></div>
+</section>
+
+<footer>
+  <p>K IMPERIA is operated by UNYKORN</p>
+  <p class="disclaimer">This is not an offer to sell securities or investment products.</p>
+</footer>
+
+<script src="k-imperia.js"></script>
+</body>
+</html>
