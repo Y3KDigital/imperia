@@ -197,11 +197,17 @@ GitHub Pages is useful to **show the UI** publicly. It is a static host (no serv
 
 1. GitHub repo → **Settings** → **Pages**
 2. **Build and deployment** → Source: **Deploy from a branch**
-3. Branch: `main` and folder: `/ (root)`
+3. Branch: `main`
 
-Your site will appear at:
+If your publishing source is set to `/docs` (recommended for this repo), you’ll get:
 
-- `https://y3kdigital.github.io/imperia/`
+- Portal: `https://y3kdigital.github.io/imperia/`
+- Public intake demo: `https://y3kdigital.github.io/imperia/demo/`
+- Admin demo: `https://y3kdigital.github.io/imperia/demo/admin.html`
+
+If you switch the publishing source to `/ (root)`, the site will serve the root `index.html` instead.
+
+Your site will appear at: `https://y3kdigital.github.io/imperia/`
 
 ### Point Pages at Supabase (optional)
 
@@ -476,9 +482,10 @@ Registration is non-binding and does not create any contractual obligation.
 
 ## 📜 License
 
-Proprietary — UNYKORN Internal Use
-
-Unauthorized distribution or modification prohibited.
+- Apache-2.0 license text: [LICENSE](LICENSE)
+- MIT license text: [LICENSE-MIT](LICENSE-MIT)
+- Trademark guidance: [TRADEMARKS.md](TRADEMARKS.md)
+- Attribution/trademark notice: [NOTICE](NOTICE)
 
 ---
 

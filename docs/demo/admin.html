@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K IMPERIA — Genesis Command Center (Demo)</title>
+  <link rel="stylesheet" href="admin.css" />
+  <script>
+    // Optional: configure demo to call Supabase Edge Functions.
+    // window.K_IMPERIA_FUNCTIONS_BASE = 'https://<PROJECT_REF>.supabase.co/functions/v1';
+  </script>
+</head>
+<body>
+
+<header class="admin-header">
+  <div class="header-content">
+    <h1>K IMPERIA</h1>
+    <p class="subtitle">Genesis Command Center (Demo)</p>
+    <p class="subtitle" style="margin-top: 6px; color: #808080;">Back to portal: <a href="../" style="color:#c9a24d; text-decoration:none;">/docs</a></p>
+  </div>
+</header>
+
+<main class="admin-main">
+
+  <!-- Summary Stats -->
+  <section class="stats-strip">
+    <div class="stat-card">
+      <div class="stat-value" id="totalSubmissions">—</div>
+      <div class="stat-label">Total Submissions</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-value" id="totalGold">—</div>
+      <div class="stat-label">Gold Weight (combined units)</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-value" id="totalSilver">—</div>
+      <div class="stat-label">Silver Weight (combined units)</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-value" id="referralRate">—</div>
+      <div class="stat-label">Referral Participation</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-value" id="jurisdictionCount">—</div>
+      <div class="stat-label">Unique Jurisdictions</div>
+    </div>
+  </section>
+
+  <!-- Pending Submissions Table -->
+  <section class="submissions-section">
+    <div class="section-header">
+      <h2>Pending Submissions</h2>
+      <div class="controls">
+        <label>Sort by:</label>
+        <select id="sortBy">
+          <option value="timestamp">Timestamp (newest)</option>
+          <option value="weight">Weight (highest)</option>
+          <option value="referrals">Referral Count</option>
+        </select>
+        <button id="refreshBtn" class="btn-secondary">Refresh</button>
+      </div>
+    </div>
+
+    <div id="loadingState" class="loading">Loading submissions...</div>
+    <div id="errorState" class="error" style="display: none;"></div>
+
+    <table id="submissionsTable" style="display: none;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Metal</th>
+          <th>Weight</th>
+          <th>Jurisdiction</th>
+          <th>Referrals</th>
+          <th>Timestamp</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="submissionsBody"></tbody>
+    </table>
+
+    <div id="emptyState" class="empty-state" style="display: none;">No pending submissions.</div>
+  </section>
+
+  <!-- Leaderboard -->
+  <section class="leaderboard-section">
+    <div class="section-header">
+      <h2>Referral Leaderboard</h2>
+    </div>
+    <div id="leaderboardContent"></div>
+  </section>
+
+</main>
+
+<!-- Modal -->
+<div id="detailModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Submission Details</h3>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
