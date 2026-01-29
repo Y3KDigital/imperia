@@ -47,14 +47,19 @@ This is the **front gate** to the K IMPERIA issuance and settlement layer — a 
 
 ```mermaid
 flowchart LR
-   U[User] --> IPFS[IPFS Gateway: index.html]
-   IPFS --> EF1[Supabase Edge Function: submit-intake]
-   EF1 --> DB[(Supabase Postgres)]
-   EF1 --> SG[SendGrid (optional)]
+   subgraph Public[Public Intake]
+      U[User] --> IPFS[IPFS Gateway: index.html];
+      IPFS --> EF1[Supabase Edge Function: submit-intake];
+   end
 
-   A[Admin] --> IPFS2[IPFS Gateway: admin.html]
-   IPFS2 --> EF2[Supabase Edge Function: admin-api]
-   EF2 --> DB
+   subgraph Admin[Admin Command Center]
+      A[Admin] --> IPFS2[IPFS Gateway: admin.html];
+      IPFS2 --> EF2[Supabase Edge Function: admin-api];
+   end
+
+   EF1 --> DB[(Supabase Postgres)];
+   EF2 --> DB;
+   EF1 --> SG[SendGrid (optional)];
 ```
 
 ## Purpose
